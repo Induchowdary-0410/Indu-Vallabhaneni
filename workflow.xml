@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Workflow PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Workflow explicitTransitions="true" name="IAASLoginWorkflow" type="LCMProvisioning">
+  <Variable initializer="true" name="trace"/>
+  <Step icon="Start" name="Start" posX="20" posY="20">
+    <Transition to="Generic Step"/>
+  </Step>
+  <Step icon="Default" name="Generic Step" posX="269" posY="17">
+    <Approval name="IAASLoginWorkflow" owner="spadmin" return="" send="">
+      <Form name="IAASLoginWorkflow">
+        <Attributes>
+          <Map>
+            <entry key="hideIncompleteFields">
+              <value>
+                <Boolean/>
+              </value>
+            </entry>
+            <entry key="includeHiddenFields">
+              <value>
+                <Boolean/>
+              </value>
+            </entry>
+            <entry key="pageTitle" value="IAASLoginWorkflow"/>
+          </Map>
+        </Attributes>
+        <Section name="Section 1">
+          <Field displayName="Employee Name" name="employeeName" type="sailpoint.object.Identity"/>
+          <Field displayName="Application  Name" name="applicationName" type="Application"/>
+          <Field displayName="Access Type" name="accessType" type="ManagedAttribute"/>
+        </Section>
+        <Button action="next" label="Submit"/>
+        <Button action="cancel" label="Cancel"/>
+      </Form>
+    </Approval>
+    <Transition to="Generic Step (1)"/>
+  </Step>
+  <Step icon="Default" name="Generic Step (1)" posX="587" posY="20">
+    <Transition to="Stop"/>
+  </Step>
+  <Step icon="Stop" name="Stop" posX="859" posY="21"/>
+</Workflow>
